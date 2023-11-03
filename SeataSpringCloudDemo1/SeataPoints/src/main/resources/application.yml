@@ -1,0 +1,34 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: points
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.119.141:3307/seata_data
+      username: root
+      password: 123456
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 192.168.119.141:8848
+        group: SEATA_GROUP
+      config:
+        import-check:
+          enabled: false
+seata:
+  enabled: true
+  tx-service-group: seata_transcation
+  service:
+    vgroup-mapping:
+      seata_transcation: default
+  registry:
+    type: Nacos
+    nacos:
+      username: nacos
+      password: nacos
+      server-addr: 192.168.119.141:8848
+      group: SEATA_GROUP

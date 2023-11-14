@@ -9,15 +9,22 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>SeataPoints</artifactId>
+    <artifactId>SeataBusiness</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SeataPoints</name>
-    <description>SeataPoints</description>
+    <name>SeataBusiness</name>
+    <description>SeataBusiness</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -25,14 +32,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>

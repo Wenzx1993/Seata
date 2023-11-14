@@ -1,13 +1,13 @@
 package com.example.seata;
 
-import io.seata.spring.annotation.datasource.EnableAutoDataSourceProxy;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-@EnableAutoDataSourceProxy
 @EnableDiscoveryClient
+@MapperScan(basePackages = {"com.example.seata.mapper"})
 public class SeataStorageApplication {
 
     public static void main(String[] args) {

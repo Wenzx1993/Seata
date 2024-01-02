@@ -1,0 +1,27 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: business
+  #注册服务到nacos上
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 192.168.119.141:8848
+        group: SEATA_GROUP
+#seata配置
+seata:
+  #事务分组
+  tx-service-group: seata_group
+  service:
+    vgroup-mapping:
+      seata_group: default
+  #根据服务名到注册中心查找具体的服务
+  registry:
+    nacos:
+      username: nacos
+      password: nacos
+      server-addr: 192.168.119.141:8848
+      group: SEATA_GROUP

@@ -1,0 +1,33 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: storage
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.119.141:3307/seata_data
+      username: root
+      password: 123456
+  #注册服务到nacos上
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 192.168.119.141:8848
+        group: SEATA_GROUP
+#seata配置
+seata:
+  #事务分组
+  tx-service-group: seata_group
+  service:
+    vgroup-mapping:
+      seata_group: default
+  #根据服务名到注册中心查找具体的服务
+  registry:
+    nacos:
+      username: nacos
+      password: nacos
+      server-addr: 192.168.119.141:8848
+      group: SEATA_GROUP

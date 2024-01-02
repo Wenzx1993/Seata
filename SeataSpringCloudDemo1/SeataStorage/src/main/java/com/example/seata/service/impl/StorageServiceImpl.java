@@ -14,7 +14,6 @@ public class StorageServiceImpl implements StorageService {
     private StorageMapper storageMapper;
 
     public int decrease(StoragePo storagePo) {
-        int a = 2/0;
         StoragePo resultPo = ChainWrappers.lambdaQueryChain(storageMapper)
                 .eq(StoragePo::getGoodsId, storagePo.getGoodsId()).one();
         resultPo.setStorage(resultPo.getStorage()-storagePo.getStorage());

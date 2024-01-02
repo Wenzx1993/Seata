@@ -13,6 +13,13 @@
 
     <packaging>pom</packaging>
 
+    <modules>
+        <module>SeataBusiness</module>
+        <module>SeataOrder</module>
+        <module>SeataPoints</module>
+        <module>SeataStorage</module>
+    </modules>
+
     <dependencyManagement>
         <dependencies>
             <dependency>

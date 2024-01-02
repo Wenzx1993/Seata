@@ -24,7 +24,7 @@ public class BusinessServiceImpl implements BusinessService {
     @Autowired
     private StorageFeign storageFeign;
 
-    @GlobalTransactional(name = "order")
+    @GlobalTransactional(name = "sale",timeoutMills = 100000,rollbackFor = Exception.class)
     public void order(BusinessOrderVo businessOrderVo) {
         Integer goodsId = businessOrderVo.getGoodsId();
         Integer num = businessOrderVo.getNum();

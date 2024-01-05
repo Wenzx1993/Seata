@@ -38,7 +38,8 @@ public class PointServiceImpl implements PointService {
 
     public boolean increaseCommit(BusinessActionContext actionContext) {
         PointsPo pointPo = actionContext.getActionContext("paramPoint", PointsPo.class);
-        PointsPo resultPo = pointMapper.selectById(pointPo.getId());
+        PointsPo resultPo = ChainWrappers.lambdaQueryChain(pointMapper)
+                .eq(PointsPo::getUsername, pointPo.getUsername()).one();
         if (Objects.nonNull(resultPo)) {
             resultPo.setPoints(resultPo.getPoints() + resultPo.getFrozenPoints());
             resultPo.setFrozenPoints(0);
@@ -50,7 +51,8 @@ public class PointServiceImpl implements PointService {
 
     public boolean increaseRollback(BusinessActionContext actionContext) {
         PointsPo pointPo = actionContext.getActionContext("paramPoint", PointsPo.class);
-        PointsPo resultPo = pointMapper.selectById(pointPo.getId());
+        PointsPo resultPo = ChainWrappers.lambdaQueryChain(pointMapper)
+                .eq(PointsPo::getUsername, pointPo.getUsername()).one();
         if (Objects.nonNull(resultPo)) {
             resultPo.setFrozenPoints(0);
             pointMapper.updateById(resultPo);

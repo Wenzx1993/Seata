@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderDto {
 
+    private Long id;
+
     private Integer goodsId;
 
     private Integer num;

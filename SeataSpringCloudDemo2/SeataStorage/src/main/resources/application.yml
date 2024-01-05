@@ -26,6 +26,7 @@ seata:
       seata_group: default
   #根据服务名到注册中心查找具体的服务
   registry:
+    type: nacos
     nacos:
       username: nacos
       password: nacos

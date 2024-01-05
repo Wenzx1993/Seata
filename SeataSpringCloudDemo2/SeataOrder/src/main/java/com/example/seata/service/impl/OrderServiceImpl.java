@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
      * @param orderPo
      * @return
      */
-    @TwoPhaseBusinessAction(name = "orderTcc", commitMethod = "addOneCommit", rollbackMethod = "rollbackMethod")
+    @TwoPhaseBusinessAction(name = "orderTcc", commitMethod = "addOneCommit", rollbackMethod = "addOneRollback")
     public int addOne(@BusinessActionContextParameter(paramName = "orderParam") OrderPo orderPo) {
         orderPo.setCreateTime(new Date());
         orderPo.setStatus(0);

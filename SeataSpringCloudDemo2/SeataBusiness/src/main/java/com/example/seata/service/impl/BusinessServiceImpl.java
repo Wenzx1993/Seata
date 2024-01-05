@@ -1,5 +1,6 @@
 package com.example.seata.service.impl;
 
+import com.alibaba.nacos.common.utils.UuidUtils;
 import com.example.seata.feign.OrderFeign;
 import com.example.seata.feign.PointFeign;
 import com.example.seata.feign.StorageFeign;
@@ -11,6 +12,9 @@ import com.example.seata.vo.BusinessOrderVo;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.UUID;
 
 @Service
 public class BusinessServiceImpl implements BusinessService {
@@ -29,7 +33,7 @@ public class BusinessServiceImpl implements BusinessService {
         Integer goodsId = businessOrderVo.getGoodsId();
         Integer num = businessOrderVo.getNum();
         String username = businessOrderVo.getUsername();
-        OrderDto orderDto = new OrderDto(goodsId, num, businessOrderVo.getMoney(), username);
+        OrderDto orderDto = new OrderDto(new Date().getTime(), goodsId, num, businessOrderVo.getMoney(), username);
         orderFeign.addOne(orderDto);
 
 
